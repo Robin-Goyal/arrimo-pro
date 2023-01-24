@@ -1,38 +1,40 @@
-
 import React, { useEffect } from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
-import { checkUserLogin, getCurrentUser, loggedIn } from '../../redux-modules/User/userSlices';
-import { AsyncThunkAction, current } from '@reduxjs/toolkit';
-import { useRouter } from 'next/dist/client/router';
+import { Button, Checkbox, Form, Input } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  checkUserLogin,
+  getCurrentUser,
+  loggedIn,
+} from "../../redux-modules/User/userSlices";
+import { AsyncThunkAction, current } from "@reduxjs/toolkit";
+import { useRouter } from "next/dist/client/router";
 
 const UserLogin = () => {
-
   const dispatch = useDispatch();
-  const loginStatus = useSelector(loggedIn)
-  const currentUser = useSelector(getCurrentUser)
+  const loginStatus = useSelector(loggedIn);
+  const currentUser = useSelector(getCurrentUser);
   const router = useRouter();
 
-  console.log('loginStatus :>> ', loginStatus);
+  console.log("loginStatus :>> ", loginStatus);
 
   useEffect(() => {
     if (loginStatus) {
       router.push("/user/dashboard");
     } else {
       if (currentUser !== "") {
-        console.log('currentUser :>> ', currentUser);
+        console.log("currentUser :>> ", currentUser);
         alert("Invalid username/Password");
       }
     }
-  }, [loginStatus, currentUser])
+  }, [loginStatus, currentUser]);
 
-  const onFinish = (values) => {
+  const onFinish = (values: any) => {
     // @ts-ignore
-    dispatch(checkUserLogin(values))
+    dispatch(checkUserLogin(values));
     console.log(values);
   };
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+  const onFinishFailed = (errorInfo: any) => {
+    console.log("Failed:", errorInfo);
   };
   return (
     <Form
@@ -56,7 +58,7 @@ const UserLogin = () => {
         rules={[
           {
             required: true,
-            message: 'Please input your username!',
+            message: "Please input your username!",
           },
         ]}
       >
@@ -69,7 +71,7 @@ const UserLogin = () => {
         rules={[
           {
             required: true,
-            message: 'Please input your password!',
+            message: "Please input your password!",
           },
         ]}
       >
@@ -98,7 +100,7 @@ const UserLogin = () => {
         </Button>
       </Form.Item>
     </Form>
-  )
-}
+  );
+};
 
 export default UserLogin;

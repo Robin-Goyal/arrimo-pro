@@ -27,7 +27,10 @@
     "pages/api/user/login.js",
     "pages/_app.js",
     "pages/_app.js",
-    "redux-modules/User/userSlices.js"
+    "redux-modules/User/userSlices.js",
+    "utils/database.js",
+    "pages/user/edit-user/[id].tsx",
+    "pages/user/edit-user/[id].tsx",
   ],
   "exclude": [
     "node_modules"

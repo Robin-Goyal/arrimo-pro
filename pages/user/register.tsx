@@ -3,7 +3,7 @@ import RegisterOrEditUser from "../../modules/RegisterOrEditUser";
 
 const UserRegister = () => {
   return (
-    <RegisterOrEditUser edit={false} />
+    <RegisterOrEditUser edit={false} id={null} />
   )
 }
 
